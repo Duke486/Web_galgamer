@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>剧情编辑器2.0</title>
+    <script>
+        window.onload = function () {
+            var oPosition=document.getElementById("position");
+            var oName=document.getElementById("name");
+            var oSay=document.getElementById("say");
+            var oVoice=document.getElementById("voice");
+            var oBackground=document.getElementById("background");
+            var oGo=document.getElementById("go");
+            var oOut_say=document.getElementById("out_say");
+            var oOut_voice=document.getElementById("out_voice");
+            var oOut_background=document.getElementById("out_background");
+            var posi=parseInt( oPosition.value),saytext='["占位',voicetext='["占位',backgroundtext='["占位';
+            oGo.onclick=function(){
+                posi=parseInt( oPosition.value)
+                saytext=saytext+'","'+oName.value+'","'+oSay.value;
+                oSay.value='';
+                if(oVoice.value!=''){
+                    voicetext=voicetext+'","'+posi+'","./voice/'+oVoice.value+'.mp3';
+                    oVoice.value='';
+                }
+                if(oBackground.value!=''){
+                    backgroundtext=backgroundtext+'","'+posi+'","./img/'+oBackground.value+'.png';
+                    oBackground.value='';
+                }
+                posi=posi+2;
+                oOut_say.value=saytext;
+                oOut_voice.value=voicetext;
+                oOut_background.value=backgroundtext;
+                oPosition.value=posi;
+                
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <h1>剧情编辑工具2.0  By Duke_486</h1>
+    <span>当前被添加的台词的<strong>数组内</strong>的编号：</span><br>
+    <input type="text" id="position" value="2"><br>
+    <span>姓名：</span><br>
+    <input type="text" id="name"><br>
+    <span>内容：</span><br>
+    <input type="text" id="say" style="width: 900px;"><br>
+    <span>语音文件名，没有则留空：</span><br>
+    <input type="text" id="voice"><br>
+    <span>背景文件名</span><br>
+    <input type="text" id="background"><br>
+    <input type="button" id="go" value="确认加入"><br>
+    <span>台词数组</span><input style="width: 900px;" type="text" id="out_say"><br>
+    <span>背景数组</span><input style="width: 900px;" type="text" id="out_background"><br>
+    <span>语音数组</span><input style="width: 900px;" type="text" id="out_voice"><br>
+
+</body>
+
+</html>

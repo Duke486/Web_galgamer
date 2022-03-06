@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>三色绘恋 翻制</title>
+    <script>
+        window.onload = function () {
+            function DelVideo() {
+                oVideo.removeChild(oVideo.firstElementChild);
+                oImage.innerHTML=('<img id="image" style="width: 1024px;height: 570px;">');
+                oBackground=document.getElementsByTagName("img");
+            }
+            function Changeimg(){
+                oBackground[0].src=background[imgposi+1];
+                imgposi=imgposi+2;
+            }
+            function Playvoice(){
+                oVoiceplayer.removeChild(oVoiceplayer.firstElementChild);
+                voicehtml='<audio style="width: 1px;height: 1px;" controls="controls" autoplay="autoplay"><source src="'+voice[voiceposi+1]+'" type="audio/mpeg" /></audio>';
+                oVoiceplayer.innerHTML=voicehtml;
+                voiceposi=voiceposi+2;
+            }
+            function playvideo(){
+                oVideo.innerHTML = '<video autoplay="autoplay" style="width: 1024px;height: 576px;" ><source src="./vid/0001.mp4" type="video/mp4"/></video>';
+            }
+            function Decide(){
+                oGo.setAttribute("hidden",'');
+                A=document.createElement("input");
+                A.style="position: absolute;top: 300px;left: 400px;";
+                A.type="button";
+                A.value="墨小菊";
+                A.onclick=function(){
+                    mydecide='主线-墨小菊'
+                    oDecide.removeChild(oDecide.firstElementChild);
+                    oDecide.removeChild(oDecide.firstElementChild);
+                    dialog=MA;
+                    background=MAbackground;
+                    posi=0;
+                    voiceposi=1;
+                    imgposi=1;
+                    oGo.removeAttribute("hidden");
+                    go();
+                };
+                oDecide.appendChild(A);
+                B=document.createElement("input");
+                B.style="position: absolute;top: 300px;left: 600px;";
+                B.type="button";
+                B.value="文芷";
+                B.onclick=function(){
+                    mydecide='主线-文芷'
+                    oDecide.removeChild(oDecide.firstElementChild);
+                    oDecide.removeChild(oDecide.firstElementChild);
+                    dialog=MB;
+                    background=MBbackground;
+                    posi=0;
+                    voiceposi=1;
+                    imgposi=1;
+                    oGo.removeAttribute("hidden");
+                    go();
+                };
+                oDecide.appendChild(B);
+            }
+            
+            var M= ["占位"," ","今天也是自己一个人去上学"," "," 自从父母到外地办厂子之后，我就一个人留在武汉的家里","邻居","哦，这不是邱诚吗",
+            "邱诚","早上好啊，爷爷","邻居","真巧啊。啊，对了，刚才还碰到那丫头呢，我还提到你呢","邱诚","啊······爷爷，我还着急上学，先走了啊","邻居",
+            "哦，不急不急，路上注意车啊"," ","我继续向小区门口走去"," ","那个身影是······","邱诚","墨！······","墨小菊","啊"," ","一不留神，就喊出来了",
+            " ","发生了那种事，她现在应该不想看到我吧"," 墨小菊","······","","她走掉了，果然啊","","任由双脚走着，等我回过神来的时候，已经到学校门口了",
+            " ","今天公布分班榜，我从普通班转到了艺术班，尽管家里人都反对就是了"," ","不知道会遇到怎样的同学啊······"," ","来到教室，邻座是一位紫发女孩子",
+            " ","坐在最后排吗？应该跟我一样是新生吧"," ","分班表上的新生只有两个，另一个人好像叫 文芷","邱诚","你好，请问你是，文芷吗","文芷","啊","邱诚",
+            "抱歉抱歉，我可能认错人了","文芷","为什么······"," ","好奇怪的女生"," ","以后能很好相处吗"," ","开学第一天就这么忙啊，不知不觉都傍晚了"," 丁老师",
+            "好了，以上就是秋季运动会的大致安排"," 丁老师","我们作为艺术班，一定要做好宣传工作"," 丁老师","这次运动会会有省里的领导来视察，必须认真对待",
+            " 丁老师","好了，散会。同学们回家吧","文芷","······","邱诚","？","文芷","我只是在想，你的画，是怎样的呢","邱诚","我的画？为什么啊","文芷",
+            "啊。只是，想看看你的画而已，稍微，有点兴趣······"," ","刚见面就要看画的人，应该很少见吧"," ","不过拒绝人家感觉有点过意不去，她也没有什么恶意",
+            "邱诚","好吧，明天我带来几张给你看"," ","走进小区，打开家门，回到我的房间里"," ","书桌上是为新学期准备的素描本","邱诚","今天画点什么记录一下吧",
+            "邱诚","要画什么呢","进入分支线路",""];
+            var Mbackground= ["占位","2","./img/Shot 0001.png","18","./img/Shot 0002.png","22","./img/Shot 0003.png","28","./img/Shot 0004.png","32",
+            "./img/Shot 0005.png","38","./img/Shot 0006.png","46","./img/Shot 0007.png","50","./img/Shot 0008.png","56","./img/Shot 0009.png","66",
+            "./img/Shot 0010.png","82","./img/Shot 0011.png","88","./img/Shot 0012.png"];
+            var Mvoice=["占位","6","./voice/0001.mp3","10","./voice/0002.mp3","14","./voice/0003.mp3","22","./voice/0004.mp3","28","./voice/0005.mp3",
+            "46","./voice/0006.mp3","50","./voice/0007.mp3","70","./voice/0008.mp3","74","./voice/0009.mp3"];
+
+
+            var MA=["占位","邱诚","好了","v",""];
+            var MAbackground=["占位","2","./img/Shot 0013.png"];
+
+            var MB=["占位","邱诚","好了","v",""];
+            var MBbackground=["占位","2","./img/Shot 0014.png"];
+
+            var dialog =M;
+            var background =Mbackground;
+            var voice = Mvoice;
+
+
+            var posi = 0;
+            var imgposi=1;
+            var voiceposi=1;
+            var voicehtml=null;
+            var A,B,C,mydecide='主线',opener=null,historyhtml;
+
+            var oBackground=null;
+            var oInfo=document.getElementById('info');
+            var oVoiceplayer=document.getElementById('voiceplayer');
+            var oVideo = document.getElementById("video");
+            var oImage = document.getElementById("image");
+            var oGo = document.getElementById("go");
+            var oName = document.getElementById("name");
+            var oSay = document.getElementById("say");
+            var oDecide=document.getElementById("decide");
+            var oHistory=document.getElementById("history");
+
+            var videotime = setTimeout(DelVideo, 107000);
+            oVideo.innerHTML = '<video autoplay="autoplay" style="width: 1024px;height: 576px;" ><source src="./vid/M1.mp4" type="video/mp4"/></video>';
+            var timing=true;
+            oVoiceplayer.innerHTML='<p></p>';
+    
+
+            oGo.onclick=function go(){
+                if(timing){
+                clearTimeout(videotime);
+                DelVideo();
+                timing=false;
+                }
+                posi=posi+2;
+                oInfo.value='台词位置：'+posi+'，当前线路：'+mydecide+'           |Web_Galgamer v2.1  by Duke_486';
+                oName.innerText=(dialog[posi-1]);
+                oSay.innerText=(dialog[posi]);
+                if(dialog[posi-1]=='v'){playvideo()};
+                if(dialog[posi-1]=='进入分支线路'){Decide()};
+                if(posi==parseInt(background[imgposi])){Changeimg();}
+                if(posi==parseInt(voice[voiceposi])){Playvoice();}
+            };
+           
+        }
+    </script>
+    <style type="text/css">
+        #name {
+            position: absolute;
+            top: 450px;
+            left: 100px;
+            color: white;
+            font-size: 20px;
+
+            
+
+            text-shadow:
+                -1px -1px 0 #4f4d57,
+                1px -1px 0 #4f4d57,
+                -1px 1px 0 #4f4d57,
+                1px 1px 0 #4f4d57,
+                0px 2px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        #say {
+            position: absolute;
+            top: 450px;
+            left: 220px;
+            width: 750px;
+            color: white;
+            font-size: 20px;
+            text-shadow:
+                -1px -1px 0 #4f4d57,
+                1px -1px 0 #4f4d57,
+                -1px 1px 0 #4f4d57,
+                1px 1px 0 #4f4d57,
+                0px 2px 2px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <p id="name"></p>
+    <p id="say"></p>
+    <div id="decide"></div>
+    <div id="video"></div>
+    <div id="image"></div>
+    
+    <span>信息：</span><input type="text" id="info" style="width: 500px;" value="目前正在正常运行">
+    <input type="button" value="记录" id="history">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="前进" style="width: 300px;" id="go">
+    <div id="voiceplayer"></div>
+    <br><p>此Demo仅供个人学习使用，其中使用的所有图片视频素材版权归《Tricolour Lovestory》制作公司所有，如果侵犯了您的权益请联系duke_486@outlook.com删除</p>
+    
+</body>
+
+</html>
